@@ -143,7 +143,7 @@ router.get('/', async (req, res) => {
                     name: 'cta_url',
                     buttonParamsJson: JSON.stringify({
                         display_text: 'Visit Bot Repo',
-                        url: 'https://github.com/popkidc/POPKID-XD'
+                        url: 'https://github.com/nick254/NICK-XMD'
                     })
                 },
                 {
