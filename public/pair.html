@@ -3,226 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Popkid-Xmd | LINK DEVICE</title>
-  <meta name="description" content="Secure WhatsApp pairing powered by Popkid-Xmd">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Exo+2:wght@400;500&display=swap" rel="stylesheet">
+  <title>NICK-XMD | Link Device</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
     :root {
-      --neon: #00ff88;
-      --neon-dim: #00cc6a;
-      --dark: #0a0a0f;
-      --glass: rgba(20, 20, 30, 0.35);
-      --text: #e0f7fa;
-      --input-bg: rgba(30, 30, 50, 0.4);
-      --border: rgba(0, 255, 136, 0.3);
-      --hover: rgba(0, 255, 136, 0.15);
+      --ios-bg: #f2f2f7;
+      --ios-blue: #007aff;
+      --ios-card: rgba(255, 255, 255, 0.8);
+      --ios-text: #000000;
+      --ios-secondary: #8e8e93;
+      --ios-gray: #e5e5ea;
+      --blur: blur(25px);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: var(--dark);
-      color: var(--text);
-      font-family: 'Exo 2', sans-serif;
+      background: linear-gradient(135deg, #a2c2e6 0%, #d1e1f3 100%);
+      color: var(--ios-text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      position: relative;
-      padding: 40px 20px;
+      align-items: center;
+      padding: 20px;
     }
 
-    #particles-js { position: absolute; width: 100%; height: 100%; z-index: -1; }
+    /* Particles container - kept for tech vibe but subtle */
+    #particles-js { 
+      position: absolute; 
+      width: 100%; 
+      height: 100%; 
+      z-index: 1; 
+      opacity: 0.4;
+    }
 
+    /* iOS Glass Card */
     .container {
       width: 100%;
-      max-width: 520px;
-      padding: 48px 40px;
-      backdrop-filter: blur(12px);
-      background: var(--glass);
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+      max-width: 420px;
+      padding: 40px 30px;
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      background: var(--ios-card);
+      border-radius: 45px; /* iOS Squircle vibe */
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
       z-index: 10;
-      min-height: 400px;
-      overflow-y: auto;
-      opacity: 0;
-      transform: translateY(20px) scale(0.98);
-      animation: fadeInUp 0.8s ease forwards;
+      text-align: center;
     }
-
-    @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes float {
-      0%,100%{transform:translateY(0);}
-      50%{transform:translateY(-10px);}
-    }
-
-    @keyframes rotate {
-      0%{transform:rotate(0deg);}
-      100%{transform:rotate(360deg);}
-    }
-
-    @keyframes pulse {
-      0%{box-shadow:0 0 15px var(--neon);}
-      100%{box-shadow:0 0 30px var(--neon),0 0 60px var(--neon-dim);}
-    }
-
-    .header { text-align: center; margin-bottom: 32px; }
 
     .logo-container {
-      perspective: 1000px;
       width: 100px;
       height: 100px;
       margin: 0 auto 20px;
-      cursor: pointer;
-      transform-style: preserve-3d;
-      animation: pulse 3s infinite alternate;
-      position: relative;
     }
 
-    .logo {
+    .logo-img {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid transparent;
-      box-shadow: 0 0 20px rgba(0,255,136,0.5);
-      backface-visibility: hidden;
-      transition: transform 0.6s ease;
-      position: relative;
-    }
-
-    .logo::before {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, transparent, var(--neon), transparent);
-      opacity: 0.6;
-      z-index: -1;
-      animation: rotate 4s linear infinite;
-    }
-
-    .logo img { width: 100%; height: 100%; object-fit: cover; }
-
-    .logo-container:hover .logo { transform: rotateY(180deg); }
-
-    .logo-back {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      background: var(--neon);
-      color: var(--dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-family: 'Orbitron', sans-serif;
-      backface-visibility: hidden;
-      transform: rotateY(-180deg);
-      box-shadow: 0 0 20px var(--neon);
+      border-radius: 22px; /* iOS App Icon Radius */
+      object-fit: cover;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
 
     .title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 32px;
+      font-size: 24px;
       font-weight: 700;
-      margin-bottom: 8px;
-      background: linear-gradient(to right, var(--neon), #00b3ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: 1px;
-    }
-
-    .subtitle {
-      font-size: 15px;
-      color: rgba(224,247,250,0.7);
-      margin-bottom: 28px;
+      letter-spacing: -0.5px;
+      margin-bottom: 5px;
     }
 
     .tagline {
       font-size: 13px;
-      color: var(--neon);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 24px;
+      color: var(--ios-secondary);
       font-weight: 500;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Input Styling */
+    .input-group {
+      text-align: left;
+      margin-bottom: 20px;
     }
 
     .input-label {
       display: block;
-      margin-bottom: 10px;
-      font-size: 14px;
-      color: var(--neon);
-      font-weight: 500;
+      margin-left: 5px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: var(--ios-secondary);
+      font-weight: 600;
     }
 
     .input-field {
       width: 100%;
-      padding: 15px 18px;
-      background: var(--input-bg);
-      border: 1px solid var(--border);
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--ios-gray);
       border-radius: 14px;
-      color: var(--text);
-      font-size: 15px;
+      color: var(--ios-text);
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
     }
 
-    .generate-btn {
+    .input-field:focus {
+      border-color: var(--ios-blue);
+    }
+
+    /* Buttons */
+    .ios-btn-primary {
       width: 100%;
-      padding: 14px;
-      background: var(--neon);
-      color: var(--dark);
+      padding: 16px;
+      background: var(--ios-blue);
+      color: #fff;
       border: none;
       border-radius: 14px;
       font-size: 16px;
       font-weight: 600;
-      font-family: 'Orbitron', sans-serif;
       cursor: pointer;
-      margin: 20px 0 16px;
+      margin-bottom: 15px;
+      transition: opacity 0.2s, transform 0.1s;
     }
 
+    .ios-btn-primary:active {
+      opacity: 0.8;
+      transform: scale(0.98);
+    }
+
+    /* Code Display Area */
     .code-display {
-      min-height: 52px;
-      padding: 16px;
-      background: var(--input-bg);
-      border: 1px solid var(--border);
+      min-height: 60px;
+      padding: 15px;
+      background: var(--ios-gray);
       border-radius: 14px;
-      text-align: center;
-      font-family: 'Orbitron', monospace;
-      font-size: 16px;
-      color: var(--neon);
-      margin-bottom: 18px;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--ios-blue);
       display: flex;
       align-items: center;
       justify-content: center;
-      word-break: break-all;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
     }
 
-    .copy-btn {
+    .ios-btn-secondary {
       width: 100%;
       padding: 14px;
       background: transparent;
-      border: 1px solid var(--border);
+      border: 1px solid var(--ios-blue);
       border-radius: 14px;
-      color: var(--neon);
-      font-size: 15.5px;
+      color: var(--ios-blue);
+      font-size: 15px;
       font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .copy-btn:hover { background: var(--hover); }
+    .ios-btn-secondary:active {
+      background: rgba(0, 122, 255, 0.05);
+    }
+
   </style>
 </head>
 
@@ -231,30 +182,24 @@
 <div id="particles-js"></div>
 
 <div class="container">
-  <div class="header">
-    <div class="logo-container" id="logoFlip">
-      <div class="logo">
-        <img src="https://files.catbox.moe/aapw1p.png" alt="Popkid-Xmd Logo">
-      </div>
-      <div class="logo-back">
-        <i class="fas fa-shield-alt"></i>
-      </div>
-    </div>
-
-    <h1 class="title">POPKID-XMD</h1>
-    <p class="subtitle"></p>
-    <div class="tagline">Powered by Popkid Tech</div>
+  <div class="logo-container">
+    <img src="https://files.catbox.moe/aapw1p.png" alt="Logo" class="logo-img">
   </div>
 
-  <label class="input-label">ENTER PHONE NUMBER</label>
-  <input type="text" id="mobileNumber" class="input-field" placeholder="eg. +254111385747">
+  <h1 class="title">NICK-XMD</h1>
+  <div class="tagline">Link Your Device</div>
 
-  <button class="generate-btn" id="submit">GENERATE CODE</button>
+  <div class="input-group">
+    <label class="input-label">PHONE NUMBER</label>
+    <input type="text" id="mobileNumber" class="input-field" placeholder="+254...">
+  </div>
 
-  <div class="code-display" id="codeDisplay">Code will appear here</div>
+  <button class="ios-btn-primary" id="submit">Generate Link Code</button>
 
-  <button class="copy-btn" id="copy">
-    <i class="fas fa-copy"></i> COPY CODE
+  <div class="code-display" id="codeDisplay">- - - - - -</div>
+
+  <button class="ios-btn-secondary" id="copy">
+    <i class="fas fa-copy"></i> Copy Code
   </button>
 </div>
 
@@ -262,35 +207,32 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
 
 <script>
+  // Subtle particle background
   particlesJS("particles-js", {
     particles: {
-      number: { value: 80, density: { enable: true, area: 800 } },
-      color: { value: "#00ff88" },
+      number: { value: 40, density: { enable: true, area: 800 } },
+      color: { value: "#007aff" },
       shape: { type: "circle" },
-      opacity: { value: 0.5, random: true },
+      opacity: { value: 0.2, random: true },
       size: { value: 3, random: true },
-      move: { enable: true, speed: 1.5 }
-    },
-    interactivity: {
-      events: {
-        onhover: { enable: true, mode: "repulse" },
-        onclick: { enable: true, mode: "push" }
-      }
-    },
-    retina_detect: true
+      move: { enable: true, speed: 0.8 }
+    }
   });
 
+  // Functionality (Untouched)
   document.getElementById('submit').addEventListener('click', async () => {
     const codeDisplay = document.getElementById('codeDisplay');
     const num = document.getElementById('mobileNumber').value.trim();
     if (!num) {
-      codeDisplay.textContent = 'Enter a valid number';
+      codeDisplay.textContent = 'Invalid Number';
       return;
     }
 
+    codeDisplay.textContent = 'Connecting...';
+
     try {
       const res = await axios(`/code?number=${num.replace(/\D/g, '')}`);
-      codeDisplay.textContent = res.data.code || 'Error generating key';
+      codeDisplay.textContent = res.data.code || 'Error';
     } catch {
       codeDisplay.textContent = 'Failed';
     }
@@ -298,10 +240,14 @@
 
   document.getElementById('copy').addEventListener('click', () => {
     const code = document.getElementById('codeDisplay').textContent.trim();
-    if (!code || code === 'code will appear here') return;
+    if (!code || code === '- - - - - -' || code === 'Connecting...') return;
 
     navigator.clipboard.writeText(code);
-    // alert — silent copy
+    // iOS feedback feel: we can change button text briefly
+    const copyBtn = document.getElementById('copy');
+    const originalText = copyBtn.innerHTML;
+    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied';
+    setTimeout(() => { copyBtn.innerHTML = originalText; }, 2000);
   });
 </script>
 
